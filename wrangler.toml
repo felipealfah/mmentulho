@@ -1,21 +1,11 @@
 # Configuração Wrangler para MM Entulho - Cloudflare Pages
+# Para Cloudflare Pages, a configuração é mínima
+# O build command e output directory são gerenciados pelo Cloudflare Pages
+
 name = "mmentulho"
 type = "javascript"
-account_id = ""
-workers_dev = true
-route = ""
-zone_id = ""
 
-[env.production]
-routes = [
-  { pattern = "mmentulho.com.br", zone_name = "" }
-]
-
-[build]
-command = "npm run build"
-cwd = "./"
-watch_paths = ["src/**/*.ts", "src/**/*.astro"]
-
-[build.upload]
-format = "modules"
-main = "dist/_worker.js"
+# Cloudflare Pages gerencia automaticamente:
+# - Build command: npm run build
+# - Build output directory: dist
+# - Upload do _worker.js
