@@ -1,0 +1,111 @@
+---
+// Static HTML button for server rendering
+---
+
+<button
+  id="mobile-menu-toggle"
+  class="md:hidden flex flex-col gap-1.5 focus:outline-none relative z-50 p-2 active:opacity-70 transition-opacity"
+  aria-label="Toggle menu"
+  aria-expanded="false"
+  type="button"
+>
+  <span
+    class="w-6 h-0.5 bg-gray-800 transition-all duration-300 block"
+    data-line="1"
+  />
+  <span
+    class="w-6 h-0.5 bg-gray-800 transition-all duration-300 block"
+    data-line="2"
+  />
+  <span
+    class="w-6 h-0.5 bg-gray-800 transition-all duration-300 block"
+    data-line="3"
+  />
+</button>
+
+<div id="mobile-menu-backdrop" class="hidden fixed inset-0 top-16 z-30 bg-black/20 md:hidden" role="presentation"></div>
+
+<div id="mobile-menu-content" class="hidden fixed left-0 right-0 top-16 z-40 bg-white md:hidden max-h-[calc(100vh-64px)] overflow-y-auto shadow-lg">
+  <nav class="flex flex-col divide-y divide-gray-100">
+    <a
+      href="/"
+      class="text-lg font-semibold text-gray-800 hover:bg-yellow-50 active:bg-yellow-100 transition-colors py-4 px-6 block w-full text-left"
+    >
+      Início
+    </a>
+    <a
+      href="/sobre"
+      class="text-lg font-semibold text-gray-800 hover:bg-yellow-50 active:bg-yellow-100 transition-colors py-4 px-6 block w-full text-left"
+    >
+      Sobre
+    </a>
+    <a
+      href="/servicos"
+      class="text-lg font-semibold text-gray-800 hover:bg-yellow-50 active:bg-yellow-100 transition-colors py-4 px-6 block w-full text-left"
+    >
+      Serviços
+    </a>
+    <a
+      href="/contato"
+      class="text-lg font-semibold text-white bg-primary hover:bg-amber-600 active:bg-amber-700 transition-colors py-4 px-6 block w-full text-left"
+    >
+      Contato
+    </a>
+  </nav>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const menu = document.getElementById('mobile-menu-content');
+    const lines = toggle ? toggle.querySelectorAll('[data-line]') : [];
+
+    let isOpen = false;
+
+    const closeMenu = () => {
+      isOpen = false;
+      if (menu) menu.classList.add('hidden');
+      if (backdrop) backdrop.classList.add('hidden');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = 'auto';
+
+      // Reset hamburger animation
+      if (lines[0]) lines[0].style.transform = 'rotate(0)';
+      if (lines[1]) lines[1].style.opacity = '1';
+      if (lines[2]) lines[2].style.transform = 'rotate(0)';
+    };
+
+    const openMenu = () => {
+      isOpen = true;
+      if (menu) menu.classList.remove('hidden');
+      if (backdrop) backdrop.classList.remove('hidden');
+      if (toggle) toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+
+      // Animate hamburger to X
+      if (lines[0]) lines[0].style.transform = 'rotate(45deg) translateY(10px)';
+      if (lines[1]) lines[1].style.opacity = '0';
+      if (lines[2]) lines[2].style.transform = 'rotate(-45deg) translateY(-10px)';
+    };
+
+    const toggleMenu = () => {
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    };
+
+    if (toggle) toggle.addEventListener('click', toggleMenu);
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
+
+    // Close menu on navigation
+    document.querySelectorAll('#mobile-menu-content a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Ensure clean state on load
+    closeMenu();
+  });
+</script>

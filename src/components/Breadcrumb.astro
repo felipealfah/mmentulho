@@ -1,0 +1,58 @@
+---
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+// Estrutura para Breadcrumb Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "item": `${Astro.url.origin}${item.url}`
+  }))
+};
+---
+
+<!-- Breadcrumb Schema JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+
+<!-- Breadcrumb Visual -->
+<nav class="py-4 px-4 mb-6 bg-gray-50 rounded-lg border border-gray-200">
+  <ol class="flex flex-wrap gap-2 items-center text-sm">
+    {items.map((item, index) => (
+      <li class="flex items-center gap-2">
+        <a
+          href={item.url}
+          class={`${
+            index === items.length - 1
+              ? 'text-gray-600 font-semibold'
+              : 'text-primary hover:text-amber-700 transition-colors'
+          }`}
+        >
+          {item.name}
+        </a>
+        {index !== items.length - 1 && (
+          <svg
+            class="w-4 h-4 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

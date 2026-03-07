@@ -1,0 +1,41 @@
+# Cloudflare Pages Headers
+# SEO e Security Headers
+
+# Headers para todas as páginas
+/*
+  # Segurança
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+  # Cache para assets estáticos
+  Cache-Control: public, max-age=31536000, immutable
+
+# Headers para páginas HTML (sem cache agressivo)
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Headers para RSS/Sitemap
+/sitemap-index.xml
+  Content-Type: application/xml
+  Cache-Control: public, max-age=86400
+
+/sitemap-*.xml
+  Content-Type: application/xml
+  Cache-Control: public, max-age=86400
+
+/robots.txt
+  Content-Type: text/plain
+  Cache-Control: public, max-age=604800
+
+# Headers para imagens
+/*.webp
+/*.jpg
+/*.jpeg
+/*.png
+/*.gif
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: image/webp

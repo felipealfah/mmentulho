@@ -1,0 +1,51 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import Services from '@components/Services.astro';
+import Differentials from '@components/Differentials.astro';
+import AboutCompany from '@components/AboutCompany.astro';
+import ServiceArea from '@components/ServiceArea.astro';
+import Testimonials from '@components/Testimonials.astro';
+import FAQ from '@components/FAQ.astro';
+import CTA from '@components/CTA.astro';
+---
+
+<BaseLayout title="Caçamba de Entulho em Brasília, DF | Aluguel Rápido | MM Entulho" description="Caçamba de entulho em Brasília, DF. Aluguel rápido com entrega em 2 horas. Orçamento gratuito. Fale no WhatsApp: (61) 97402-2227">
+  {/* 1. Hero Section */}
+  <Hero
+    title="Aluguel de Caçamba de Entulho em Brasília"
+    subtitle="Precisa descartar entulho de obra, reforma ou demolição em Brasília? Alugue caçambas de diversos tamanhos com entrega em até 2 horas em toda DF. Orçamento gratuito, sem taxa de visita."
+    ctaText="Solicitar Orçamento no WhatsApp"
+    ctaUrl="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos"
+    backgroundImage="/cacamba_de_entulho _em_brasilia.webp"
+    isDark={false}
+  />
+
+  {/* 2. Serviços */}
+  <Services />
+
+  {/* 3. Diferenciais */}
+  <Differentials />
+
+  {/* 4. Sobre a Empresa */}
+  <AboutCompany />
+
+  {/* 5. Área de Atendimento */}
+  <ServiceArea />
+
+  {/* 6. Depoimentos */}
+  <Testimonials />
+
+  {/* 7. FAQ */}
+  <FAQ />
+
+  {/* 8. CTA Final */}
+  <CTA
+    title="Precisa de uma Caçamba de Entulho em Brasília? Solicite o Seu Orçamento Agora"
+    description="Caçamba de entulho com entrega rápida em até 2 horas em toda Brasília e DF. Orçamento gratuito, sem taxa de visita e sem compromisso. É só enviar uma mensagem no WhatsApp."
+    primaryText="Chamar no WhatsApp"
+    primaryUrl="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos"
+    secondaryText="Ver Todos os Serviços"
+    secondaryUrl="/servicos"
+  />
+</BaseLayout>

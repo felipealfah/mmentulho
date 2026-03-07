@@ -1,0 +1,123 @@
+---
+import { services } from '../data/services';
+
+const servicesSchema = services.map((service) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.name,
+  "description": service.description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "MM Entulho",
+    "url": "https://cacambas-express-brasilia.com.br",
+    "areaServed": "Brasília, DF"
+  },
+  "serviceType": "Aluguel de Caçambas e Serviços de Entulho",
+  "areaServed": "Brasília e Entorno, DF"
+}));
+---
+
+<!-- Service Schema JSON-LD -->
+{servicesSchema.map((schema) => (
+  <>
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  </>
+))}
+
+<section class="py-12 md:py-20 lg:py-24 bg-gradient-to-b from-white to-yellow-50" id="services">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-yellow-100 text-primary">
+        Soluções Completas
+      </span>
+      <h2 class="text-3xl sm:text-4xl md:text-4xl font-bold text-gray-900 mb-4">
+        Serviços de Caçambas MM Entulho
+      </h2>
+      <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+        Escolha a modalidade que melhor atende seu projeto — aluguel de caçamba ou remoção sob demanda com Tele Entulho
+      </p>
+    </div>
+
+    <div class="flex justify-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 w-full max-w-3xl">
+        {services.map((service, index) => {
+          const isPopular = index === 0;
+
+          return (
+            <div class={`
+              relative bg-white rounded-xl transition-all duration-300 overflow-hidden group
+              ${isPopular ? 'border-2 border-primary shadow-xl hover:shadow-2xl hover:scale-105' : 'border border-gray-200 shadow-md hover:shadow-lg hover:scale-100'}
+            `}>
+            {/* Destaque de popular */}
+            {isPopular && (
+              <div class="absolute top-0 right-0 bg-primary text-white px-4 py-2 text-xs font-bold rounded-bl-lg z-10">
+                POPULAR
+              </div>
+            )}
+
+            {/* Service Image */}
+            {service.image && (
+              <div class="w-full h-40 overflow-hidden bg-gradient-to-b from-yellow-50 to-white">
+                <img
+                  src={service.image}
+                  alt={service.name}
+                  class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </div>
+            )}
+
+            <div class="p-6 md:p-8">
+              {!service.image && (
+                <div class={`w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 ${isPopular ? 'bg-primary text-white' : 'bg-yellow-100 text-primary'}`}>
+                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={service.icon} />
+                  </svg>
+                </div>
+              )}
+
+              <h3 class="text-lg md:text-xl font-bold mb-3 text-gray-900 min-h-14">
+                {service.name}
+              </h3>
+
+              <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-6 min-h-24">
+                {service.description}
+              </p>
+
+              {service.price && (
+                <div class="mb-6 pt-6 border-t border-gray-100">
+                  <p class="text-2xl md:text-3xl font-bold text-primary">
+                    {service.price}
+                  </p>
+                  <p class="text-xs text-gray-500 mt-1">
+                    Valor a partir de
+                  </p>
+                </div>
+              )}
+
+              <a
+                href={`/servicos/${service.slug}`}
+                class={`
+                  w-full inline-flex items-center justify-center px-4 py-3 font-semibold rounded-lg transition-all duration-300 text-sm md:text-base
+                  ${isPopular ? 'bg-primary text-white hover:bg-orange-700 hover:shadow-lg' : 'bg-yellow-50 text-primary hover:bg-primary hover:text-white'}
+                `}
+              >
+                Saiba Mais →
+              </a>
+            </div>
+          </div>
+        );
+        })}
+      </div>
+    </div>
+
+    <div class="text-center mt-12 md:mt-16 lg:mt-20">
+      <a
+        href="/servicos"
+        class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary to-orange-700 text-white font-bold text-base md:text-lg rounded-lg hover:shadow-lg transition-all duration-300 active:scale-95 hover:scale-105"
+      >
+        Ver Todos os Serviços →
+      </a>
+    </div>
+  </div>
+</section>

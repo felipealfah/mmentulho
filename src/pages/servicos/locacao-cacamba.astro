@@ -1,0 +1,433 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/Breadcrumb.astro';
+import FAQ from '@components/FAQ.astro';
+import CTA from '@components/CTA.astro';
+
+// Breadcrumb items
+const breadcrumbItems = [
+  { label: 'Início', url: '/' },
+  { label: 'Serviços', url: '/servicos' },
+  { label: 'Locação de Caçamba', url: '/servicos/locacao-cacamba' }
+];
+
+// Service description data
+const serviceDescription = {
+  title: 'Locação de Caçamba de Entulho Profissional',
+  paragraphs: [
+    'A locação de caçamba de entulho é a solução ideal para quem está em obra, reforma, demolição ou precisa fazer limpeza de grandes volumes. Na MM Entulho, oferecemos caçambas em 3 tamanhos (4m³, 6m³ e 8m³) para atender desde pequenas reformas até grandes construções. Você recebe a caçamba limpa, rastreada em tempo real, e nós cuidamos de toda a destinação responsável dos resíduos em aterros licenciados.',
+    'Não é apenas um container de ferro. É a tranquilidade de não se preocupar com entulho enquanto sua obra anda. Entregamos em até 2 horas, você paga um preço justo e sem surpresas, e todos os resíduos vão para o lugar certo. Somos autorizados pelo SLU (Secretaria de Limpeza Urbana) e emitimos comprovante de destinação para cada coleta. Seu projeto, nosso compromisso.'
+  ],
+  highlights: [
+    {
+      title: 'Profissional Licenciado',
+      description: 'Vistoriada e preparada por profissionais seguindo padrões de qualidade'
+    },
+    {
+      title: 'Rastreamento em Tempo Real',
+      description: 'Acompanhe sua caçamba pelo GPS. Transparência total do começo ao fim'
+    },
+    {
+      title: 'Autorizado pelo SLU',
+      description: 'Licença ambiental e CTR (Controle de Transporte de Resíduos) inclusos'
+    },
+    {
+      title: 'Garantia de Limpeza',
+      description: 'Entregamos higienizada e sem riscos de contaminação. Qualidade garantida'
+    }
+  ]
+};
+
+// Benefits
+const benefits = [
+  {
+    title: 'Entrega Rápida (até 2h)',
+    description: 'Sua obra não espera. Entregamos em até 2 horas na maioria dos casos em Brasília',
+    icon: 'truck'
+  },
+  {
+    title: 'Transparência Total',
+    description: 'Orçamento claro e sem surpresas. Você sabe o preço antes de confirmar',
+    icon: 'check-circle'
+  },
+  {
+    title: 'Responsabilidade Ambiental',
+    description: '100% dos resíduos vão para aterros licenciados. Sua obra com consciência',
+    icon: 'leaf'
+  },
+  {
+    title: 'Suporte 24h',
+    description: 'Qualquer dúvida ou problema, temos equipe pronta para atender imediatamente',
+    icon: 'headset'
+  }
+];
+
+// Process steps
+const processSteps = [
+  {
+    step: 1,
+    title: 'Escolha o Tamanho',
+    description: '4m³ para pequenas reformas, 6m³ para obras médias, 8m³ para demolições e grandes projetos',
+    time: 'Decisão imediata',
+    icon: 'box'
+  },
+  {
+    step: 2,
+    title: 'Solicite o Orçamento',
+    description: 'Mande mensagem no WhatsApp com o tamanho, localização e datas que precisa',
+    time: 'Resposta em até 30 minutos',
+    icon: 'message-square'
+  },
+  {
+    step: 3,
+    title: 'Confirme e Agende',
+    description: 'Aprovado o orçamento, agendamos entrega para data que funciona melhor para você',
+    time: 'Conforme sua disponibilidade',
+    icon: 'calendar'
+  },
+  {
+    step: 4,
+    title: 'Receba a Caçamba',
+    description: 'Chegamos na hora marcada, descarregamos e deixamos pronta para uso',
+    time: 'Até 2 horas após confirmação',
+    icon: 'truck'
+  },
+  {
+    step: 5,
+    title: 'Coleta e Destinação',
+    description: 'Quando terminar, liga para gente buscar. A gente descarta tudo de forma responsável',
+    time: 'Coleta agendada conforme necessário',
+    icon: 'recycle'
+  }
+];
+
+// Gallery photos
+const galleryPhotos = [
+  {
+    src: '/cacamba-4m3-brasilia.webp',
+    alt: 'Caçamba 4m³ MM Entulho alugada para pequena reforma residencial',
+    caption: 'Caçamba 4m³ - Ideal para reformas pequenas e médias'
+  },
+  {
+    src: '/cacamba-6m3-construcao.webp',
+    alt: 'Caçamba 6m³ durante projeto de construção em Brasília',
+    caption: 'Caçamba 6m³ - Perfeita para obras de médio porte'
+  },
+  {
+    src: '/cacamba-8m3-demolicao.webp',
+    alt: 'Caçamba 8m³ sendo carregada com entulho em canteiro de obras',
+    caption: 'Caçamba 8m³ - Solução para grandes demolições'
+  },
+  {
+    src: '/entrega-rapida-brasilia.webp',
+    alt: 'Caminhão de entrega de caçamba MM Entulho em rua de Brasília',
+    caption: 'Entrega rápida em até 2 horas em toda Brasília'
+  },
+  {
+    src: '/rastreamento-gps.webp',
+    alt: 'Aplicativo de rastreamento GPS da caçamba em tempo real',
+    caption: 'Rastreie sua caçamba pelo GPS em tempo real'
+  },
+  {
+    src: '/coleta-entulho.webp',
+    alt: 'Coleta profissional de caçamba cheia com retroescavadeira',
+    caption: 'Coleta segura e profissional quando você terminar'
+  },
+  {
+    src: '/destinacao-responsavel.webp',
+    alt: 'Descarga de entulho em aterro licenciado de Brasília',
+    caption: 'Destinação responsável em aterros licenciados'
+  },
+  {
+    src: '/cacamba-limpa.webp',
+    alt: 'Caçamba vazia e limpa pronta para novo aluguel',
+    caption: 'Sempre higienizada e pronta para seu uso'
+  }
+];
+
+// Service areas
+const serviceAreas = [
+  'Águas Claras',
+  'Taguatinga',
+  'Ceilândia',
+  'Samambaia',
+  'Gama',
+  'Santa Maria',
+  'Brasília (Plano Piloto)',
+  'Asa Norte',
+  'Asa Sul',
+  'Sobradinho',
+  'Cácamabas',
+  'Guará'
+];
+
+// Testimonials specific to locação
+const testimonials = [
+  {
+    name: 'Fernando Oliveira',
+    company: 'Proprietário — Reforma em Águas Claras',
+    text: 'Aluguei a caçamba 6m³ para minha reforma. Chegou super rápido, preço justo, e a coleta sem problema. O rastreamento no GPS foi ótimo para acompanhar. Super recomendo a MM Entulho!',
+    rating: 5
+  },
+  {
+    name: 'Construtora BSB',
+    company: 'Gestor de Obras',
+    text: 'Parceiros da MM Entulho há 3 anos. Usamos as caçambas em praticamente todas as nossas obras. Profissionalismo impecável, entrega no prazo, preços competitivos. Muito confiável!',
+    rating: 5
+  },
+  {
+    name: 'Patricia Santos',
+    company: 'Proprietária — Demolição em Cácamabas',
+    text: 'Demolir minha casa foi complicado, mas a MM Entulho tornou tudo fácil. A caçamba 8m³ coube perfeitamente, a coleta foi rápida e responsável. Recomendo demais!',
+    rating: 5
+  }
+];
+
+// FAQ for locação
+const faqs = [
+  {
+    question: 'Qual é a diferença entre 4m³, 6m³ e 8m³?',
+    answer: '4m³ cabe em uma garagem (reformas pequenas). 6m³ é o tamanho médio (reformas e obras pequenas). 8m³ é a maior (demolições, grandes volumes).'
+  },
+  {
+    question: 'Quanto tempo posso manter a caçamba alugada?',
+    answer: 'Você define! Pode ser por dias, semanas ou meses. Quanto mais tempo, melhor o preço diário. Nos avise se precisar de prorrogação.'
+  },
+  {
+    question: 'Há taxa de entrega e coleta?',
+    answer: 'Entrega e coleta estão inclusos! A gente cobra taxa de deslocamento conforme a distância, mas já informamos no orçamento antes de confirmar.'
+  },
+  {
+    question: 'Como funciona o pagamento?',
+    answer: 'Você paga à vista (PIX, dinheiro) ou podemos gerar boleto se preferir. Sem surpresas no final.'
+  },
+  {
+    question: 'O que não posso colocar na caçamba?',
+    answer: 'Não aceitamos: pneus velhos, baterias, eletrônicos, óleo, tinta ou qualquer material tóxico. Entulho comum (tijolos, madeira, concreto) sem problema!'
+  },
+  {
+    question: 'Como o rastreamento GPS funciona?',
+    answer: 'Enviamos um link para você acompanhar a localização da caçamba em tempo real. Transparência total!'
+  },
+  {
+    question: 'Vocês cobram se a caçamba chegar quebrada ou suja?',
+    answer: 'Nunca! Entregamos vistoriada e limpa. Se chegar com defeito, trocamos na hora, sem custo extra.'
+  },
+  {
+    question: 'Preciso estar presente quando a caçamba chegar?',
+    answer: 'Ideal sim, para validar o local e confirmar que está ok. Mas se não puder, pode deixar combinado com alguém ou deixar instruções.'
+  }
+];
+---
+
+<BaseLayout
+  title="Locação de Caçamba de Entulho em Brasília | 4m³, 6m³, 8m³ | MM Entulho"
+  description="Aluguel de caçambas de entulho em Brasília. Tamanhos 4m³, 6m³ e 8m³. Entrega em 2h, rastreamento, SLU autorizado. Orçamento grátis!"
+>
+  <!-- Hero Section -->
+  <section class="py-20 md:py-32 bg-yellow-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="mb-6">
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold bg-white/20 text-white">Popular</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+        Locação de Caçamba de Entulho
+      </h1>
+      <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto">
+        Aluguel de caçambas em 3 tamanhos com entrega rápida, rastreamento e descarte responsável em Brasília
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <Breadcrumb items={breadcrumbItems} />
+
+  <!-- Description Section -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">{serviceDescription.title}</h2>
+
+      <div class="grid md:grid-cols-2 gap-8 items-start mb-12">
+        <div>
+          {serviceDescription.paragraphs.map((paragraph) => (
+            <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+        <img
+          src="/aluguel_cacamba_entulhobrasilia.webp"
+          alt="Caçambas de entulho MM Entulho empilhadas, prontas para aluguel em Brasília"
+          class="rounded-lg shadow-lg"
+        />
+      </div>
+
+      <!-- Highlights -->
+      <div class="grid md:grid-cols-2 gap-6">
+        {serviceDescription.highlights.map((highlight) => (
+          <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-600">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">{highlight.title}</h3>
+            <p class="text-gray-600">{highlight.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        Benefícios de Alugar Caçamba com MM Entulho
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {benefits.map((benefit) => (
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-3">{benefit.title}</h3>
+            <p class="text-gray-600">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        Como Funciona o Aluguel de Caçamba
+      </h2>
+
+      <div class="space-y-6">
+        {processSteps.map((step) => (
+          <div class="flex gap-6 bg-gray-50 p-6 rounded-lg">
+            <div class="flex-shrink-0">
+              <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-600 text-white font-bold text-lg">
+                {step.step}
+              </div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+              <p class="text-gray-600 mb-2">{step.description}</p>
+              <p class="text-sm text-yellow-600 font-semibold">{step.time}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Service Areas Section -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        Onde Entregamos Caçambas em Brasília
+      </h2>
+
+      <div class="bg-gray-50 p-8 rounded-lg mb-8">
+        <p class="text-gray-700 text-center mb-6">
+          Atendemos toda a região de Brasília e DF com entrega rápida e rastreada. Não importa se você está em uma RA distante, nossa logística funciona para você.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          {serviceAreas.map((area) => (
+            <div class="flex items-center">
+              <span class="text-yellow-600 mr-3 font-bold">●</span>
+              <span class="text-gray-700">{area}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 p-6 bg-white rounded-lg">
+          <div>
+            <p class="text-sm text-gray-600 mb-1"><strong>Cobertura:</strong></p>
+            <p class="text-gray-900">Toda Brasília e DF</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600 mb-1"><strong>Entrega:</strong></p>
+            <p class="text-gray-900">Até 2 horas na maioria dos casos</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600 mb-1"><strong>Taxa:</strong></p>
+            <p class="text-gray-900">Consultada no orçamento</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a
+          href="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded-lg transition-colors"
+        >
+          Consulte Sua Região pelo WhatsApp →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        O Que Clientes Dizem Sobre Nossa Locação
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {testimonials.map((testimonial) => (
+          <div class="bg-white p-8 rounded-lg shadow-md border-l-4 border-yellow-600">
+            <div class="flex items-center mb-4">
+              <div class="text-amber-400 flex">
+                {[...Array(testimonial.rating)].map(() => '⭐')}
+              </div>
+            </div>
+            <p class="text-gray-700 italic mb-6">{testimonial.text}</p>
+            <p class="font-bold text-gray-900">{testimonial.name}</p>
+            <p class="text-sm text-gray-600">{testimonial.company}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <FAQ />
+
+  <!-- CTA Final -->
+  <CTA
+    title="Pronto para sua próxima obra?"
+    description="Agende sua caçamba agora e resolva o problema de entulho. Rápido, seguro e com preço justo!"
+    primaryText="Solicitar Orçamento"
+    primaryUrl="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos"
+    secondaryText="Ver Outros Serviços"
+    secondaryUrl="/servicos"
+    layout="horizontal"
+  />
+
+  <!-- Internal Links -->
+  <section class="py-12 px-4 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <h3 class="text-lg font-bold text-gray-900 mb-6 text-center">Páginas Relacionadas</h3>
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <a href="/" class="text-yellow-600 hover:text-yellow-700 font-semibold underline">
+          ← Voltar para a página inicial
+        </a>
+        <a href="/servicos" class="text-yellow-600 hover:text-yellow-700 font-semibold underline">
+          Ver todos os serviços
+        </a>
+        <a href="/contato" class="text-yellow-600 hover:text-yellow-700 font-semibold underline">
+          Fale conosco para dúvidas →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

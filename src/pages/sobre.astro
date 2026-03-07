@@ -1,0 +1,484 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/Breadcrumb.astro';
+import CTA from '@components/CTA.astro';
+
+// Breadcrumb items
+const breadcrumbItems = [
+  { name: 'Início', url: '/' },
+  { name: 'Sobre', url: '/sobre' }
+];
+
+// Organization Schema com informações detalhadas sobre MM Entulho
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "MM Entulho",
+  "description": "MM Entulho é referência em aluguel de caçambas em Brasília. Frota moderna, preços competitivos e entrega rápida para suas obras.",
+  "url": "https://mmentulho.com.br",
+  "logo": "https://mmentulho.com.br/logo.png",
+  "image": "https://mmentulho.com.br/about-image.jpg",
+  "foundingDate": "2008",
+  "founders": [
+    {
+      "@type": "Person",
+      "name": "Carlos Mendes",
+      "jobTitle": "Fundador",
+      "url": "https://mmentulho.com.br/sobre"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/mmentulho",
+    "https://www.instagram.com/mmentulho",
+    "https://www.whatsapp.com/mmentulho"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "telephone": "+55-61-97402-2227",
+    "email": "contato@mmentulho.com.br",
+    "areaServed": "Brasília, Cácamabas - DF"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Brasília",
+    "addressLocality": "Brasília",
+    "addressRegion": "DF",
+    "addressCountry": "BR"
+  },
+  "areaServed": [
+    {
+      "@type": "Place",
+      "name": "Brasília - DF"
+    },
+    {
+      "@type": "Place",
+      "name": "Cácamabas - DF"
+    }
+  ]
+};
+
+// Aggregate Rating Schema para depoimentos
+const aggregateRatingSchema = {
+  "@context": "https://schema.org",
+  "@type": "AggregateRating",
+  "ratingValue": "5",
+  "ratingCount": "4"
+};
+---
+
+<BaseLayout title="Sobre MM Entulho - Aluguel de Caçambas em Brasília" description="MM Entulho é referência em aluguel de caçambas em Brasília. Frota moderna, preços competitivos e entrega rápida para suas obras. Desde 2008.">
+  {/* Organization Schema */}
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
+
+  {/* Aggregate Rating Schema */}
+  <script type="application/ld+json" set:html={JSON.stringify(aggregateRatingSchema)}></script>
+
+  {/* Hero Section */}
+  <section class="py-20 md:py-32 bg-yellow-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+        Sobre MM Entulho
+      </h1>
+      <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto">
+        15+ anos oferecendo soluções simples, rápidas e acessíveis para remover entulho com qualidade
+      </p>
+    </div>
+  </section>
+
+  {/* Breadcrumb */}
+  <Breadcrumb items={breadcrumbItems} />
+
+  {/* Our History Section */}
+  <section class="py-12 md:py-16 lg:py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        Nossa História
+      </h2>
+
+      <div class="space-y-6 max-w-4xl mx-auto">
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Desde 2008, MM Entulho é sinônimo de agilidade e confiabilidade no aluguel de caçambas em Brasília. Começamos com uma pequena frota de caçambas e rapidamente expandimos para atender famílias em reformas, construtoras de grande porte e empresas de desmonte. Cada cliente satisfeito nos motivou a crescer responsavelmente, investindo em frota moderna e processos eficientes. Hoje temos mais de 40 caçambas de diferentes tamanhos prontas para sua obra.
+        </p>
+
+        <p class="text-lg text-gray-600 leading-relaxed">
+          O crescimento nos ensinou que aluguel de caçamba não é apenas disponibilizar um contentor. É preciso ser ágil na entrega, flexível nos prazos e responsável na destinação dos resíduos. Desenvolvemos processos que facilitam a vida do cliente: agendamento simples, entrega rápida, retirada sem complicações e destinação correta em aterros licenciados. Atendemos desde reforma residencial até projeto de demolição complexo — cada obra é nossa prioridade.
+        </p>
+
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Somos hoje a empresa mais confiável de Brasília para aluguel de caçambas. Mais de 1.000 clientes por ano confiam em nós, tanto pessoas físicas quanto construtoras. Nosso objetivo é simples: fazer seu projeto andar, sem complicações com entulho. Transparência, qualidade e responsabilidade ambiental são os pilares que sustentam nossa reputação.
+        </p>
+
+        <div class="bg-orange-50 p-8 rounded-lg border-l-4 border-orange-500 mt-8">
+          <p class="text-lg text-gray-700 italic mb-4">
+            "Aluguel de caçamba parece simples, mas a gente faz diferença. Uma entrega rápida, um preço justo e destinação correta. Isso muda a vida de quem está em obra."
+          </p>
+          <p class="font-semibold text-gray-900">Carlos Mendes</p>
+          <p class="text-gray-600">Fundador</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Timeline / Evolução */}
+  <section class="py-12 md:py-16 lg:py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        Nossa Evolução
+      </h2>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-8">
+          {/* Timeline Item 1 */}
+          <div class="flex gap-6 items-start">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                🚀
+              </div>
+              <div class="w-1 h-24 bg-orange-200 mt-2"></div>
+            </div>
+            <div class="flex-1 pb-8">
+              <h3 class="text-xl font-bold text-gray-900">2008 - Fundação</h3>
+              <p class="text-gray-600 mt-2">Início com 5 caçambas. Primeiros clientes em reformas residenciais em Águas Claras.</p>
+            </div>
+          </div>
+
+          {/* Timeline Item 2 */}
+          <div class="flex gap-6 items-start">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                🚛
+              </div>
+              <div class="w-1 h-24 bg-orange-200 mt-2"></div>
+            </div>
+            <div class="flex-1 pb-8">
+              <h3 class="text-xl font-bold text-gray-900">2012 - Expansão de Frota</h3>
+              <p class="text-gray-600 mt-2">Crescimento para 15 caçambas de diferentes tamanhos. Parceria com aterros licenciados.</p>
+            </div>
+          </div>
+
+          {/* Timeline Item 3 */}
+          <div class="flex gap-6 items-start">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                🏢
+              </div>
+              <div class="w-1 h-24 bg-orange-200 mt-2"></div>
+            </div>
+            <div class="flex-1 pb-8">
+              <h3 class="text-xl font-bold text-gray-900">2016 - 500+ Clientes Atendidos</h3>
+              <p class="text-gray-600 mt-2">Consolidação no mercado. Primeiros contratos com construtoras de grande porte.</p>
+            </div>
+          </div>
+
+          {/* Timeline Item 4 */}
+          <div class="flex gap-6 items-start">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                ⭐
+              </div>
+              <div class="w-1 h-24 bg-orange-200 mt-2"></div>
+            </div>
+            <div class="flex-1 pb-8">
+              <h3 class="text-xl font-bold text-gray-900">2019 - Modernização de Frota</h3>
+              <p class="text-gray-600 mt-2">Investimento em 10 novas caçambas com sistema de rastreamento. Melhor atendimento.</p>
+            </div>
+          </div>
+
+          {/* Timeline Item 5 */}
+          <div class="flex gap-6 items-start">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                📈
+              </div>
+              <div class="w-1 h-24 bg-orange-200 mt-2"></div>
+            </div>
+            <div class="flex-1 pb-8">
+              <h3 class="text-xl font-bold text-gray-900">2022 - 1.000+ Clientes por Ano</h3>
+              <p class="text-gray-600 mt-2">Consolidação como maior prestadora de aluguel de caçambas em Brasília.</p>
+            </div>
+          </div>
+
+          {/* Timeline Item 6 */}
+          <div class="flex gap-6 items-start">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
+                🏆
+              </div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900">Hoje - Referência em Confiabilidade</h3>
+              <p class="text-gray-600 mt-2">Frota de 40+ caçambas. Entrega rápida, preços competitivos, destino correto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Mission, Vision, Values */}
+  <section class="py-12 md:py-16 lg:py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Nossa Missão, Visão e Valores
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {/* Missão */}
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-orange-500">
+          <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Missão</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Oferecer aluguel de caçambas simples, rápido e confiável, permitindo que clientes resolvam suas obras sem complicações com entulho.
+          </p>
+        </div>
+
+        {/* Visão */}
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-orange-500">
+          <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Visão</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Ser a empresa número 1 em Brasília em aluguel de caçambas, referência em agilidade, preços justos e destinação responsável de resíduos.
+          </p>
+        </div>
+
+        {/* Valores */}
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-orange-500">
+          <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Valores</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li class="flex items-start">
+              <span class="text-orange-500 mr-2">✓</span>
+              <span>Agilidade: Entrega rápida, sem complicações</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-orange-500 mr-2">✓</span>
+              <span>Confiabilidade: Cumprimento de prazos</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-orange-500 mr-2">✓</span>
+              <span>Transparência: Preços claros, sem surpresas</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-orange-500 mr-2">✓</span>
+              <span>Responsabilidade: Destinação em aterros licenciados</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-orange-500 mr-2">✓</span>
+              <span>Acessibilidade: Soluções para todos os tipos de obra</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Differentials */}
+  <section class="py-12 md:py-16 lg:py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Por Que Escolher MM Entulho
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {/* Diferencial 1 */}
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 3v2H5v2h4v2H3v2h6v2H1v2h8v2H0v2h9c1.1 0 2-.9 2-2v-8h4v2h-4v2h6v-2h-6v-2h8v-2h-8V7h4V5h-4V3h6V1h-6z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Frota Moderna e Completa</h3>
+          <p class="text-gray-600">40+ caçambas de diferentes tamanhos. De reforma residencial até grande obra, temos a solução ideal.</p>
+        </div>
+
+        {/* Diferencial 2 */}
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Entrega Rápida</h3>
+          <p class="text-gray-600">Entregamos em até 2 horas na maioria dos casos. Sua obra não perde tempo esperando.</p>
+        </div>
+
+        {/* Diferencial 3 */}
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Preços Competitivos</h3>
+          <p class="text-gray-600">Orçamentos justos e sem surpresas. Melhor relação custo-benefício em Brasília.</p>
+        </div>
+
+        {/* Diferencial 4 */}
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Agendamento Simples</h3>
+          <p class="text-gray-600">Agende online ou por WhatsApp. Sem burocracia, tudo descomplicado.</p>
+        </div>
+
+        {/* Diferencial 5 */}
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Destinação Responsável</h3>
+          <p class="text-gray-600">Todos os resíduos vão para aterros licenciados. Sua obra com consciência ambiental.</p>
+        </div>
+
+        {/* Diferencial 6 */}
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.81 6.63L2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">15+ Anos Confiáveis</h3>
+          <p class="text-gray-600">Mais de 1.000 clientes por ano. Referência em Brasília no aluguel de caçambas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Testimonials */}
+  <section class="py-12 md:py-16 lg:py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          O Que Nossos Clientes Dizem
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {/* Testimonial 1 */}
+        <div class="bg-gray-50 p-8 rounded-lg">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-orange-600 font-bold mr-4">
+              FO
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900">Fernando Oliveira</h3>
+              <p class="text-sm text-gray-600">Proprietário — Reforma em Águas Claras</p>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            "Aluguei caçamba para minha reforma e chegou super rápido. Preço justo, entrega no dia, retirada sem problema. Muito bom!"
+          </p>
+          <div class="flex gap-1">
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+          </div>
+        </div>
+
+        {/* Testimonial 2 */}
+        <div class="bg-gray-50 p-8 rounded-lg">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-orange-600 font-bold mr-4">
+              CB
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900">Construtora BSB</h3>
+              <p class="text-sm text-gray-600">Gestor de Obras</p>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            "Parceiros da MM Entulho há 3 anos. Confiável demais. Frota moderna, entrega rápida, e resolvem tudo pelo WhatsApp. Muito profissional."
+          </p>
+          <div class="flex gap-1">
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+          </div>
+        </div>
+
+        {/* Testimonial 3 */}
+        <div class="bg-gray-50 p-8 rounded-lg">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-orange-600 font-bold mr-4">
+              PS
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900">Patricia Santos</h3>
+              <p class="text-sm text-gray-600">Proprietária — Demolição em Cácamabas</p>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            "Demolir minha casa foi tenso, mas a MM Entulho tornou fácil. Caçamba grande, retirada rápida, tudo organizado. Super satisfeita!"
+          </p>
+          <div class="flex gap-1">
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+          </div>
+        </div>
+
+        {/* Testimonial 4 */}
+        <div class="bg-gray-50 p-8 rounded-lg">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center text-orange-600 font-bold mr-4">
+              SC
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900">Síndico Condomínio Brasília Garden</h3>
+              <p class="text-sm text-gray-600">Administração</p>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            "Usamos MM Entulho para reforma comum. Preço competitivo, agendamento fácil, sem complicações. Voltamos a contratar com prazer!"
+          </p>
+          <div class="flex gap-1">
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+            <span class="text-orange-500">⭐</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* CTA Section */}
+  <CTA
+    title="Pronto para sua próxima obra?"
+    description="Agende sua caçamba e resolva o problema de entulho. Rápido, seguro e com preço justo."
+    primaryText="Agendar Caçamba"
+    primaryUrl="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos"
+    secondaryText="Ver Planos"
+    secondaryUrl="/servicos"
+  />
+</BaseLayout>

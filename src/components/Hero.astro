@@ -1,0 +1,113 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  ctaText: string;
+  ctaUrl: string;
+  backgroundImage?: string;
+  isDark?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  ctaText,
+  ctaUrl,
+  backgroundImage,
+  isDark = backgroundImage ? true : false
+} = Astro.props;
+---
+
+<section
+  class={`
+    w-full min-h-[90vh] md:h-[80vh] flex items-center justify-center relative overflow-hidden
+    ${isDark ? 'bg-gradient-to-br from-yellow-600 to-yellow-700' : 'bg-gradient-to-br from-yellow-50 to-amber-100'}
+  `}
+  style={backgroundImage ? {
+    backgroundImage: `linear-gradient(135deg, rgba(223, 180, 62, 0.92), rgba(201, 154, 47, 0.88)), url('${backgroundImage}')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  } : {}}
+>
+
+  <div class="container mx-auto px-4 md:px-6 py-12 md:py-20">
+    <div class="flex flex-col items-center justify-center text-center">
+      {/* Main content */}
+      <div class="max-w-4xl">
+        {/* Subtítulo pequeno (destaque sutil) */}
+        <span class={`
+          inline-block px-4 py-2 rounded-full text-sm font-semibold mb-6 md:mb-8
+          ${isDark ? 'bg-white/100 text-gray-200' : 'bg-white/20 text-black'}
+        `}>
+          ⚡ Entrega Rápida em Brasília
+        </span>
+
+        <h1
+          class={`
+            text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-8 leading-tight
+            ${isDark ? 'text-white' : 'text-black'}
+          `}
+        >
+          {title}
+        </h1>
+
+        <p
+          class={`
+            text-base sm:text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 leading-relaxed
+            ${isDark ? 'text-gray-200' : 'text-gray-800'}
+            max-w-3xl mx-auto
+          `}
+        >
+          {subtitle}
+        </p>
+
+        {/* CTA Buttons */}
+        <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+          <a
+            href={ctaUrl}
+            class="w-full sm:w-auto inline-flex items-center justify-center px-6 md:px-8 py-4 md:py-5 bg-white text-primary font-bold text-base md:text-lg rounded-lg hover:bg-gray-100 transition-all duration-300 active:scale-95 shadow-lg hover:shadow-xl hover:scale-105"
+          >
+            {ctaText} →
+          </a>
+          <a
+            href="#services"
+            class={`
+              w-full sm:w-auto inline-flex items-center justify-center px-6 md:px-8 py-4 md:py-5 font-semibold text-base md:text-lg rounded-lg transition-all duration-300 active:scale-95 shadow-lg hover:shadow-xl hover:scale-105
+              bg-white/20 text-white border-2 border-white hover:bg-white/30
+            `}
+          >
+            Saiba Mais ↓
+          </a>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2">
+        <svg
+          class={`w-6 h-6 md:w-8 md:h-8 ${isDark ? 'text-white' : 'text-white'} animate-bounce`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-label="Scroll down"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-bounce {
+    animation: bounce 2s infinite;
+  }
+</style>

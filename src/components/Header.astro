@@ -1,0 +1,30 @@
+---
+import MobileMenuButton from './MobileMenuButton.astro';
+import Navigation from './Navigation.astro';
+---
+
+<header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-lg h-auto flex items-center py-3 md:py-4">
+  <div class="container mx-auto px-4 md:px-6 w-full">
+    <div class="flex justify-between items-center">
+      {/* Logo */}
+      <a href="/" class="flex-shrink-0 hover:opacity-90 transition-opacity duration-300">
+        <img
+          src="/mm_entulho.webp"
+          alt="MM Entulho - Logo da empresa de aluguel de caçambas em Brasília"
+          class="h-10 md:h-12 object-contain"
+          width="200"
+          height="48"
+          loading="eager"
+        />
+      </a>
+
+      {/* Desktop Navigation */}
+      <div class="hidden md:block">
+        <Navigation />
+      </div>
+
+      {/* Mobile Menu Button */}
+      <MobileMenuButton />
+    </div>
+  </div>
+</header>

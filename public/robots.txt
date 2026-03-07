@@ -1,0 +1,39 @@
+# MM Entulho - Brasília
+# Robots.txt para Cloudflare Pages
+
+# Permitir todos os bots por padrão
+User-agent: *
+Allow: /
+
+# Bloquear pastas administrativas e privadas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /_astro/
+Disallow: /_middleware/
+Disallow: /.well-known/
+
+# Velocidade de crawl padrão
+User-agent: *
+Crawl-delay: 1
+Request-rate: 30/60
+
+# Google - sem restrição de velocidade
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Baidu
+User-agent: Baiduspider
+Crawl-delay: 1
+
+# Yandex
+User-agent: Yandex
+Crawl-delay: 1
+
+# Sitemap - gerado automaticamente por Astro
+Sitemap: https://mmentulho.com.br/sitemap-index.xml

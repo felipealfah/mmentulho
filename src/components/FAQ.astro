@@ -1,0 +1,146 @@
+---
+// FAQ Schema para Google
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quanto custa alugar uma caçamba de entulho em Brasília?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O preço de caçamba de entulho varia de acordo com o tamanho (4m³, 6m³ ou 8m³) e a região de Brasília. Oferecemos orçamento gratuito via WhatsApp — envie sua localização e o tamanho que precisa para sua caçamba de entulho, e mandamos a proposta sem nenhum compromisso. Sem taxa de visita, sem surpresas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual é o tempo de entrega de uma caçamba de entulho?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entregamos sua caçamba de entulho em até 2 horas na região de Brasília e DF. Para horários especiais ou regiões mais afastadas, consulte disponibilidade via WhatsApp. A gente prioriza rapidez sem sacrificar a qualidade da caçamba de entulho."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vocês entregam caçamba de entulho no meu bairro em Brasília?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim! Entregamos caçamba de entulho em todos os bairros: Plano Piloto, Asa Norte, Asa Sul, Ceilândia, Taguatinga, Samambaia, Gama, Santa Maria e toda a região de Brasília e DF. Se tiver dúvida específica, mande uma mensagem com seu bairro que confirmamos a entrega de sua caçamba de entulho na hora."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "E se a caçamba chegar com defeito ou suja?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Todas as nossas caçambas são vistoriadas antes de sair. Se houver problema (defeito, sujeira, etc.), trocamos na hora, sem custo extra. Satisfação do cliente é garantia nossa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vocês fazem a destinação correta do entulho da caçamba?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, 100%. Todo material coletado na sua caçamba de entulho é levado para aterro sanitário licenciado em Brasília/DF. Você recebe comprovante de destinação. Somos responsáveis com o meio ambiente e a lei."
+      }
+    }
+  ]
+};
+---
+
+<!-- FAQ Schema JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+
+<section class="py-12 md:py-20 lg:py-24 bg-gradient-to-b from-white to-yellow-50">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="text-center mb-12 md:mb-16">
+      <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-yellow-100 text-primary">
+        Tire Suas Dúvidas
+      </span>
+      <h2 class="text-3xl sm:text-4xl md:text-4xl font-bold text-gray-900 mb-4">
+        Perguntas Frequentes
+      </h2>
+      <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+        Tire suas dúvidas sobre caçamba de entulho e nossos serviços em Brasília
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-4 md:space-y-5">
+      {/* FAQ Item 1 */}
+      <details class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all group open:shadow-lg open:border-primary">
+        <summary class="flex items-start justify-between p-5 md:p-6 cursor-pointer hover:bg-yellow-50/50 transition-colors gap-4">
+          <h3 class="text-base md:text-lg font-semibold text-gray-900 text-left">Quanto custa alugar uma caçamba de entulho em Brasília?</h3>
+          <svg class="w-6 h-6 md:w-5 md:h-5 text-primary flex-shrink-0 mt-0.5 transform transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </summary>
+        <div class="px-5 md:px-6 pb-5 md:pb-6 border-t border-gray-100 text-gray-600 text-sm md:text-base leading-relaxed">
+          O preço de caçamba de entulho varia de acordo com o tamanho (4m³, 6m³ ou 8m³) e a região de Brasília. Oferecemos orçamento gratuito via WhatsApp — envie sua localização e o tamanho que precisa para sua caçamba de entulho, e mandamos a proposta sem nenhum compromisso. Sem taxa de visita, sem surpresas.
+        </div>
+      </details>
+
+      {/* FAQ Item 2 */}
+      <details class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all group open:shadow-lg open:border-primary">
+        <summary class="flex items-start justify-between p-5 md:p-6 cursor-pointer hover:bg-yellow-50/50 transition-colors gap-4">
+          <h3 class="text-base md:text-lg font-semibold text-gray-900 text-left">Qual é o tempo de entrega de uma caçamba de entulho?</h3>
+          <svg class="w-6 h-6 md:w-5 md:h-5 text-primary flex-shrink-0 mt-0.5 transform transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </summary>
+        <div class="px-5 md:px-6 pb-5 md:pb-6 border-t border-gray-100 text-gray-600 text-sm md:text-base leading-relaxed">
+          Entregamos sua caçamba de entulho em até 2 horas na região de Brasília e DF. Para horários especiais ou regiões mais afastadas, consulte disponibilidade via WhatsApp. A gente prioriza rapidez sem sacrificar a qualidade da caçamba de entulho.
+        </div>
+      </details>
+
+      {/* FAQ Item 3 */}
+      <details class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all group open:shadow-lg open:border-primary">
+        <summary class="flex items-start justify-between p-5 md:p-6 cursor-pointer hover:bg-yellow-50/50 transition-colors gap-4">
+          <h3 class="text-base md:text-lg font-semibold text-gray-900 text-left">Vocês entregam caçamba de entulho no meu bairro em Brasília?</h3>
+          <svg class="w-6 h-6 md:w-5 md:h-5 text-primary flex-shrink-0 mt-0.5 transform transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </summary>
+        <div class="px-5 md:px-6 pb-5 md:pb-6 border-t border-gray-100 text-gray-600 text-sm md:text-base leading-relaxed">
+          Sim! Entregamos caçamba de entulho em todos os bairros: Plano Piloto, Asa Norte, Asa Sul, Ceilândia, Taguatinga, Samambaia, Gama, Santa Maria e toda a região de Brasília e DF. Se tiver dúvida específica, mande uma mensagem com seu bairro que confirmamos a entrega de sua caçamba de entulho na hora.
+        </div>
+      </details>
+
+      {/* FAQ Item 4 */}
+      <details class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all group open:shadow-lg open:border-primary">
+        <summary class="flex items-start justify-between p-5 md:p-6 cursor-pointer hover:bg-yellow-50/50 transition-colors gap-4">
+          <h3 class="text-base md:text-lg font-semibold text-gray-900 text-left">E se a caçamba chegar com defeito ou suja?</h3>
+          <svg class="w-6 h-6 md:w-5 md:h-5 text-primary flex-shrink-0 mt-0.5 transform transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </summary>
+        <div class="px-5 md:px-6 pb-5 md:pb-6 border-t border-gray-100 text-gray-600 text-sm md:text-base leading-relaxed">
+          Todas as nossas caçambas são vistoriadas antes de sair. Se houver problema (defeito, sujeira, etc.), trocamos na hora, sem custo extra. Satisfação do cliente é garantia nossa.
+        </div>
+      </details>
+
+      {/* FAQ Item 5 */}
+      <details class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all group open:shadow-lg open:border-primary">
+        <summary class="flex items-start justify-between p-5 md:p-6 cursor-pointer hover:bg-yellow-50/50 transition-colors gap-4">
+          <h3 class="text-base md:text-lg font-semibold text-gray-900 text-left">Vocês fazem a destinação correta do entulho da caçamba?</h3>
+          <svg class="w-6 h-6 md:w-5 md:h-5 text-primary flex-shrink-0 mt-0.5 transform transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </summary>
+        <div class="px-5 md:px-6 pb-5 md:pb-6 border-t border-gray-100 text-gray-600 text-sm md:text-base leading-relaxed">
+          Sim, 100%. Todo material coletado na sua caçamba de entulho é levado para aterro sanitário licenciado em Brasília/DF. Você recebe comprovante de destinação. Somos responsáveis com o meio ambiente e a lei.
+        </div>
+      </details>
+
+    </div>
+
+    <div class="mt-12 md:mt-16 text-center">
+      <p class="text-base md:text-lg text-gray-600 mb-6">Ainda tem dúvidas?</p>
+      <a
+        href="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos"
+        class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-bold text-base md:text-lg rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 active:scale-95"
+      >
+        Pedir Orçamento Agora →
+      </a>
+    </div>
+  </div>
+</section>

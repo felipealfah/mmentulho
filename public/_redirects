@@ -1,0 +1,9 @@
+# Cloudflare Pages Redirects
+# Redirecionar www para não-www (opcional)
+# https://www.mmentulho.com.br/* https://mmentulho.com.br/:splat 301
+
+# Redirecionar páginas antigas (se houver)
+# /old-page /novo-page 301
+
+# Manter URLs amigáveis do Astro
+/* /index.html 200

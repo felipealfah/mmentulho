@@ -1,0 +1,558 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/Breadcrumb.astro';
+import CTA from '@components/CTA.astro';
+
+// SEO Schema - LocalBusiness
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "MM Entulho",
+  "description": "Aluguel de caçambas de entulho e remoção sob demanda em Brasília e DF",
+  "url": "https://mmentulho.com.br",
+  "telephone": "+55 61 9 8404-5185",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Brasília",
+    "addressLocality": "Brasília",
+    "addressRegion": "DF",
+    "postalCode": "72000-000",
+    "addressCountry": "BR"
+  },
+  "areaServed": [
+    "Brasília",
+    "Águas Claras",
+    "Taguatinga",
+    "Ceilândia",
+    "Gama",
+    "Cácamabas",
+    "Guará",
+    "Samambaia",
+    "Santa Maria",
+    "Sobradinho"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "telephone": "+55 61 9 8404-5185"
+  }
+};
+
+// Service Schema
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Serviços de Caçamba de Entulho",
+  "description": "Aluguel de caçambas de entulho em diversos tamanhos para reformas, demolições e obras em Brasília",
+  "provider": {
+    "@type": "Organization",
+    "name": "MM Entulho"
+  },
+  "areaServed": "Brasília, DF",
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceUrl": "https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos"
+  }
+};
+
+// Aggregate Rating Schema
+const aggregateRatingSchema = {
+  "@context": "https://schema.org",
+  "@type": "AggregateRating",
+  "ratingValue": "5",
+  "ratingCount": "4",
+  "bestRating": "5",
+  "worstRating": "1"
+};
+
+const breadcrumbItems = [
+  { label: 'Início', url: '/' },
+  { label: 'Serviços', url: '/servicos' }
+];
+---
+
+<BaseLayout
+  title="Serviços de Caçamba de Entulho em Brasília | Locação e Tele Entulho | MM Entulho"
+  description="Aluguel de caçambas de entulho + Tele Entulho em Brasília. Rápido, rastreado e autorizado pelo SLU. Orçamento grátis. WhatsApp: (61) 97402-2227"
+>
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(aggregateRatingSchema)} />
+
+  <!-- Hero Section -->
+  <section class="py-20 md:py-32 bg-yellow-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        Nossos Serviços
+      </h1>
+      <p class="text-xl md:text-2xl max-w-3xl mx-auto text-white">
+        Soluções completas de aluguel e remoção de entulho em Brasília
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <Breadcrumb items={breadcrumbItems} />
+
+  <!-- Introdução aos Serviços -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Serviços de Caçambas MM Entulho</h2>
+
+      <div class="space-y-6 text-gray-700 leading-relaxed">
+        <p>
+          Oferecemos soluções completas de aluguel e remoção de entulho em Brasília. Seja você uma família em reforma, uma construtora em grande obra ou uma empresa de desmonte, temos a solução ideal para remover entulho com rapidez, segurança e responsabilidade ambiental.
+        </p>
+
+        <p>
+          Contamos com frota moderna de 40+ caçambas de diferentes tamanhos, entrega rápida (até 2 horas), rastreamento completo e destinação correta em aterros licenciados. Somos autorizados pelo SLU do Distrito Federal com controle legal de transporte de resíduos.
+        </p>
+
+        <p>
+          Explore cada serviço abaixo e escolha a modalidade que melhor se adequa à sua necessidade. Para dúvidas, entre em contato conosco pelo WhatsApp!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de Serviços -->
+  <section class="py-16 px-4" id="services-list">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12 text-center text-gray-900">Nossos Serviços</h2>
+
+      <div class="space-y-8">
+        <!-- Card 1: Locação de Caçamba -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border-t-4 border-yellow-600">
+          {/* TODO: Substituir com imagem real de caçamba 4m³, 6m³ e 8m³ */}
+          <img src="/aluguel_cacamba_entulhobrasilia.webp" alt="Caçambas disponíveis para aluguel em Brasília" class="w-full h-96 object-cover object-bottom bg-gray-200" />
+          <div class="p-6">
+            <div class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+              Disponibilidade Imediata
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Locação de Caçamba de Entulho</h3>
+
+            <p class="text-gray-600 mb-6">
+              Aluguel de caçambas de entulho em diversos tamanhos (4m³, 6m³ e 8m³) para reformas, demolições e obras em Brasília e DF. Entrega rápida, caçamba limpa e rastreada, com responsabilidade ambiental garantida.
+            </p>
+
+            <div class="mb-6">
+              <h4 class="font-semibold text-gray-900 mb-3">Destaques do Serviço:</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-yellow-600 mr-3 font-bold">✓</span>
+                  <span>Caçamba vistoriada e rastreada em tempo real</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-yellow-600 mr-3 font-bold">✓</span>
+                  <span>Descarte consciente em aterros licenciados</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-yellow-600 mr-3 font-bold">✓</span>
+                  <span>Autorizado pelo SLU (Secretaria de Limpeza Urbana)</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-yellow-600 mr-3 font-bold">✓</span>
+                  <span>Controle de Transporte de Resíduos (CTR) incluído</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-yellow-600 mr-3 font-bold">✓</span>
+                  <span>Entrega rápida em até 2 horas</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex gap-3">
+              <a href="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos" target="_blank" rel="noopener noreferrer" class="flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded-lg text-center transition-colors">
+                Solicitar Orçamento
+              </a>
+              <a href="/servicos/locacao-cacamba" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-900 font-bold py-3 px-4 rounded-lg text-center transition-colors">
+                Saiba Mais
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Tele Entulho -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border-t-4 border-yellow-600">
+          {/* TODO: Substituir com imagem real de serviço de remoção de entulho */}
+          <img src="/tele_entulho_brasilia.webp" alt="Serviço de remoção de entulho sob demanda em Brasília" class="w-full h-96 object-cover object-center bg-gray-200" />
+          <div class="p-6">
+            <div class="inline-block bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+              Resposta em 2 horas
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Tele Entulho em Brasília</h3>
+
+            <p class="text-gray-600 mb-6">
+              Serviço rápido de remoção de entulho sob demanda — ligue ou envie mensagem e resolvemos em até 2 horas em toda Brasília e DF. Ideal para limpeza de terrenos, garagens, áreas externas e resíduos pontuais.
+            </p>
+
+            <div class="mb-6">
+              <h4 class="font-semibold text-gray-900 mb-3">Destaques do Serviço:</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-yellow-600 mr-3 font-bold">✓</span>
+                  <span>Resposta e atendimento em até 2 horas</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-yellow-600 mr-3 font-bold">✓</span>
+                  <span>Remoção eficiente e sem sujeira</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-yellow-600 mr-3 font-bold">✓</span>
+                  <span>Descarte responsável garantido</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-yellow-600 mr-3 font-bold">✓</span>
+                  <span>Rastreamento completo do resíduo</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-yellow-600 mr-3 font-bold">✓</span>
+                  <span>Cobertura em toda Brasília e DF</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex gap-3">
+              <a href="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos" target="_blank" rel="noopener noreferrer" class="flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded-lg text-center transition-colors">
+                Solicitar Remoção
+              </a>
+              <a href="/servicos/tele-entulho" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-900 font-bold py-3 px-4 rounded-lg text-center transition-colors">
+                Saiba Mais
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como Funciona -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12 text-center text-gray-900">Como Funciona Nosso Serviço</h2>
+      <p class="text-center text-gray-600 mb-10">Processo simples e descomplicado para alugar sua caçamba ou solicitar remoção de entulho em Brasília.</p>
+
+      <div class="space-y-6">
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-500 text-white font-bold text-lg">
+              1
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Contato e Descrição</h3>
+            <p class="text-gray-600">Mande mensagem no WhatsApp descrevendo seu projeto, localização e quantidade de entulho.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-500 text-white font-bold text-lg">
+              2
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Orçamento Rápido</h3>
+            <p class="text-gray-600">Respondemos em até 2 horas com orçamento claro e sem compromisso. Enviamos foto da caçamba e detalhes.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-500 text-white font-bold text-lg">
+              3
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Agendamento Flexível</h3>
+            <p class="text-gray-600">Escolha a melhor data e horário para você. Confirmamos a entrega ou remoção conforme sua disponibilidade.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-500 text-white font-bold text-lg">
+              4
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Entrega ou Remoção</h3>
+            <p class="text-gray-600">Executamos o serviço com profissionalismo, cuidado e limpeza. Caçamba é deixada limpa e pronta.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-500 text-white font-bold text-lg">
+              5
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Destinação Responsável</h3>
+            <p class="text-gray-600">Resíduo é levado a aterro licenciado com comprovante CTR. Você recebe documentação completa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Áreas Atendidas -->
+  <section class="py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-center text-gray-900">Áreas de Atendimento</h2>
+      <p class="text-center text-gray-600 mb-10">MM Entulho atende toda a Brasília, Cácamabas e região do Distrito Federal com entrega rápida e rastreada.</p>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gray-50 p-8 rounded-lg">
+          <h3 class="text-lg font-bold text-gray-900 mb-4">Regiões Principais Atendidas</h3>
+          <ul class="grid grid-cols-2 gap-3">
+            <li class="flex items-center text-gray-700">
+              <span class="text-yellow-600 mr-2">●</span> Águas Claras
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="text-yellow-600 mr-2">●</span> Taguatinga
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="text-yellow-600 mr-2">●</span> Ceilândia
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="text-yellow-600 mr-2">●</span> Gama
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="text-yellow-600 mr-2">●</span> Brasília (Plano Piloto)
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="text-yellow-600 mr-2">●</span> Cácamabas
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="text-yellow-600 mr-2">●</span> Guará
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="text-yellow-600 mr-2">●</span> Samambaia
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="text-yellow-600 mr-2">●</span> Santa Maria
+            </li>
+            <li class="flex items-center text-gray-700">
+              <span class="text-yellow-600 mr-2">●</span> Sobradinho
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-orange-50 p-8 rounded-lg border-2 border-orange-200">
+          <h3 class="text-lg font-bold text-gray-900 mb-4">Informações de Atendimento</h3>
+          <ul class="space-y-3 text-gray-700">
+            <li><strong>Cobertura:</strong> Toda Brasília e DF</li>
+            <li><strong>Entrega:</strong> Até 2 horas na maioria dos casos</li>
+            <li><strong>Taxa de deslocamento:</strong> Consultada antes do orçamento</li>
+            <li><strong>Disponibilidade:</strong> Seg-Sab, 7h-18h (emergências sob demanda)</li>
+          </ul>
+          <a href="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded transition-colors">
+            Consulte sua região
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diferenciais -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12 text-center text-gray-900">Por Que Escolher MM Entulho</h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+          <div class="text-4xl mb-4">✅</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Autorizado pelo SLU</h3>
+          <p class="text-gray-600">Somos autorizados pela Secretaria de Limpeza Urbana do Distrito Federal. Coleta e destinação 100% legal e responsável. Você tem a certeza de estar no caminho certo.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+          <div class="text-4xl mb-4">🌱</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Descarte Consciente</h3>
+          <p class="text-gray-600">Todo resíduo é destinado a aterros licenciados com rigoroso controle ambiental. Cuidamos do meio ambiente em cada coleta de entulho em Brasília.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+          <div class="text-4xl mb-4">📍</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Caçambas Rastreadas</h3>
+          <p class="text-gray-600">Acompanhe em tempo real o seu entulho. Transparência total sobre coleta, transporte e destinação com rastreamento GPS.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+          <div class="text-4xl mb-4">📋</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Controle de Transporte (CTR)</h3>
+          <p class="text-gray-600">Comprovante oficial de destinação incluído em toda coleta. Você tem certeza de que seu entulho foi descartado corretamente.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+          <div class="text-4xl mb-4">🚛</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Frota Moderna e Completa</h3>
+          <p class="text-gray-600">40+ caçambas de diferentes tamanhos, todas mantidas em perfeito estado. De obra pequena a grande empreendimento, temos a solução.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow text-center hover:shadow-lg transition-shadow">
+          <div class="text-4xl mb-4">⚡</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Entrega Rápida</h3>
+          <p class="text-gray-600">Até 2 horas para atender em Brasília. Sua obra não espera, nós não deixamos ela parada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12 text-center text-gray-900">O Que Nossos Clientes Dizem</h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-yellow-600">
+          <div class="flex items-center mb-4">
+            <div class="text-amber-400 flex">⭐⭐⭐⭐⭐</div>
+          </div>
+          <p class="text-gray-700 italic mb-4">"Aluguei caçamba para minha reforma e chegou super rápido. Preço justo, entrega no dia, retirada sem problema. Muito bom!"</p>
+          <p class="font-bold text-gray-900">Fernando Oliveira</p>
+          <p class="text-sm text-gray-600">Proprietário — Reforma em Águas Claras</p>
+        </div>
+
+        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-yellow-600">
+          <div class="flex items-center mb-4">
+            <div class="text-amber-400 flex">⭐⭐⭐⭐⭐</div>
+          </div>
+          <p class="text-gray-700 italic mb-4">"Parceiros da MM Entulho há 3 anos. Confiável demais. Frota moderna, entrega rápida, e resolvem tudo pelo WhatsApp. Muito profissional."</p>
+          <p class="font-bold text-gray-900">Construtora BSB</p>
+          <p class="text-sm text-gray-600">Gestor de Obras</p>
+        </div>
+
+        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-yellow-600">
+          <div class="flex items-center mb-4">
+            <div class="text-amber-400 flex">⭐⭐⭐⭐⭐</div>
+          </div>
+          <p class="text-gray-700 italic mb-4">"Demolir minha casa foi tenso, mas a MM Entulho tornou fácil. Caçamba grande, retirada rápida, tudo organizado. Super satisfeita!"</p>
+          <p class="font-bold text-gray-900">Patricia Santos</p>
+          <p class="text-sm text-gray-600">Proprietária — Demolição em Cácamabas</p>
+        </div>
+
+        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-yellow-600">
+          <div class="flex items-center mb-4">
+            <div class="text-amber-400 flex">⭐⭐⭐⭐⭐</div>
+          </div>
+          <p class="text-gray-700 italic mb-4">"Usamos MM Entulho para reforma comum. Preço competitivo, agendamento fácil, sem complicações. Voltamos a contratar com prazer!"</p>
+          <p class="font-bold text-gray-900">Síndico Condomínio Brasília Garden</p>
+          <p class="text-sm text-gray-600">Administração</p>
+        </div>
+      </div>
+
+      <div class="mt-8 p-4 bg-amber-50 border border-amber-200 rounded text-center">
+        <p class="text-sm text-amber-800">
+          ⚠️ <strong>Nota:</strong> Depoimentos atuais são de clientes fictícios como placeholder. Serão substituídos por depoimentos reais dos clientes em breve.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12 text-center text-gray-900">Perguntas Frequentes</h2>
+
+      <div class="space-y-4">
+        <details class="bg-white p-6 rounded-lg shadow cursor-pointer group">
+          <summary class="font-bold text-gray-900 flex items-center justify-between">
+            Qual é o melhor tamanho de caçamba para minha obra?
+            <span class="transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <p class="text-gray-600 mt-4">Depende da quantidade de entulho. Caçamba 4m³ para reformas pequenas, 6m³ para médias e 8m³ para grandes. Entre em contato com fotos do local que recomendamos a melhor opção.</p>
+        </details>
+
+        <details class="bg-white p-6 rounded-lg shadow cursor-pointer group">
+          <summary class="font-bold text-gray-900 flex items-center justify-between">
+            Vocês entregam em quantas horas?
+            <span class="transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <p class="text-gray-600 mt-4">Entregamos em até 2 horas na maioria dos casos em Brasília. Para horários específicos ou regiões mais distantes, consultamos disponibilidade no WhatsApp.</p>
+        </details>
+
+        <details class="bg-white p-6 rounded-lg shadow cursor-pointer group">
+          <summary class="font-bold text-gray-900 flex items-center justify-between">
+            Qual é o valor do aluguel da caçamba?
+            <span class="transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <p class="text-gray-600 mt-4">Valores variam conforme tamanho, região e duração do aluguel. Oferecemos orçamento personalizado sem compromisso. Entre em contato pelo WhatsApp para cotação.</p>
+        </details>
+
+        <details class="bg-white p-6 rounded-lg shadow cursor-pointer group">
+          <summary class="font-bold text-gray-900 flex items-center justify-between">
+            Incluem taxa de deslocamento?
+            <span class="transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <p class="text-gray-600 mt-4">Sim, a taxa de deslocamento varia conforme localização em Brasília. É informada no orçamento antes de confirmar, sem surpresas.</p>
+        </details>
+
+        <details class="bg-white p-6 rounded-lg shadow cursor-pointer group">
+          <summary class="font-bold text-gray-900 flex items-center justify-between">
+            Vocês fazem destinação correta do entulho?
+            <span class="transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <p class="text-gray-600 mt-4">Sim! Somos autorizados pelo SLU e levamos todo resíduo para aterros licenciados. Você recebe comprovante CTR (Controle de Transporte de Resíduos).</p>
+        </details>
+
+        <details class="bg-white p-6 rounded-lg shadow cursor-pointer group">
+          <summary class="font-bold text-gray-900 flex items-center justify-between">
+            E se tiver problema com a caçamba durante o aluguel?
+            <span class="transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <p class="text-gray-600 mt-4">Temos suporte disponível. Se houver qualquer problema, ligamos imediatamente para resolver ou trocar a caçamba.</p>
+        </details>
+
+        <details class="bg-white p-6 rounded-lg shadow cursor-pointer group">
+          <summary class="font-bold text-gray-900 flex items-center justify-between">
+            Quanto tempo posso alugar a caçamba?
+            <span class="transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <p class="text-gray-600 mt-4">Aluguel é flexível: por dia, semana ou mês. Quanto maior o período, melhor o preço. Consulte opções de aluguel.</p>
+        </details>
+
+        <details class="bg-white p-6 rounded-lg shadow cursor-pointer group">
+          <summary class="font-bold text-gray-900 flex items-center justify-between">
+            Como agendar?
+            <span class="transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <p class="text-gray-600 mt-4">Mande mensagem no WhatsApp descrevendo seu projeto. Ou ligue direto. Confirmamos disponibilidade e agendamos rapidamente!</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <CTA
+    title="Pronto para sua próxima obra?"
+    description="Agende sua caçamba e resolva o problema de entulho. Rápido, seguro e com preço justo."
+    primaryText="Agendar Caçamba"
+    primaryUrl="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos"
+    secondaryText="Ver Planos"
+    secondaryUrl="/"
+    layout="horizontal"
+  />
+
+  <!-- Internal Links for SEO -->
+  <section class="py-12 px-4 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h3 class="text-lg font-bold text-gray-900 mb-6 text-center">Páginas Relacionadas</h3>
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <a href="/" class="text-yellow-600 hover:text-yellow-700 font-semibold underline">
+          ← Voltar para a página inicial
+        </a>
+        <a href="/sobre" class="text-yellow-600 hover:text-yellow-700 font-semibold underline">
+          Conheça nossa história
+        </a>
+        <a href="/contato" class="text-yellow-600 hover:text-yellow-700 font-semibold underline">
+          Fale conosco para dúvidas →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

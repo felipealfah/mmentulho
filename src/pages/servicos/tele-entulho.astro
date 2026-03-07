@@ -1,0 +1,433 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/Breadcrumb.astro';
+import FAQ from '@components/FAQ.astro';
+import CTA from '@components/CTA.astro';
+
+// Breadcrumb items
+const breadcrumbItems = [
+  { label: 'Início', url: '/' },
+  { label: 'Serviços', url: '/servicos' },
+  { label: 'Tele Entulho', url: '/servicos/tele-entulho' }
+];
+
+// Service description data
+const serviceDescription = {
+  title: 'Remoção Rápida de Entulho - Tele Entulho',
+  paragraphs: [
+    'Tele Entulho é o serviço que você chama quando precisa limpar um terreno, garagem ou área externa com urgência — e quer resolver ainda hoje. Não é aluguel de caçamba, é remoção completa e responsável. Você liga ou manda mensagem, nossa equipe chega em até 2 horas, carrega todo o entulho e leva embora. Simples, rápido e sem complicação.',
+    'Ideal para quem tem acúmulo pontual de resíduos: limpeza de terreno abandonado, demolição de galpão, reforma urgente, limpeza após enchente ou qualquer situação que exija resposta rápida. A gente carrega, descarta de forma responsável em aterro licenciado e você fica com o espaço limpo e pronto. Sem necessidade de deixar caçamba no seu terreno por dias. Resolve na hora!'
+  ],
+  highlights: [
+    {
+      title: 'Resposta em Até 2 Horas',
+      description: 'Ligue ou envie mensagem e nossa equipe chega rapidinho para resolver'
+    },
+    {
+      title: 'Remoção Completa',
+      description: 'A gente carrega tudo, você não mexe em nada. Fácil e seguro'
+    },
+    {
+      title: 'Descarte Responsável',
+      description: 'Todos os resíduos vão para aterro licenciado com documentação completa'
+    },
+    {
+      title: 'Sem Complicação',
+      description: 'Orçamento rápido, preço justo, sem surpresas. Resolve no mesmo dia!'
+    }
+  ]
+};
+
+// Benefits
+const benefits = [
+  {
+    title: 'Urgência Resolvida',
+    description: 'Não precisa esperar dias por caçamba. Chamou, resolveu no mesmo dia',
+    icon: 'zap'
+  },
+  {
+    title: 'Sem Acúmulo na Sua Propriedade',
+    description: 'Não fica caçamba ocupando espaço. A gente carrega e leva tudo embora',
+    icon: 'trash-2'
+  },
+  {
+    title: 'Responsabilidade Ambiental',
+    description: '100% dos resíduos descartados de forma legal em aterro licenciado',
+    icon: 'leaf'
+  },
+  {
+    title: 'Orçamento Transparente',
+    description: 'Você sabe o preço antes de confirmar. Sem taxas escondidas',
+    icon: 'check-circle'
+  }
+];
+
+// Process steps
+const processSteps = [
+  {
+    step: 1,
+    title: 'Descreva o Volume',
+    description: 'Mande mensagem ou ligue descrevendo o volume de entulho e a localização',
+    time: 'Comunicação imediata',
+    icon: 'phone'
+  },
+  {
+    step: 2,
+    title: 'Orçamento Rápido',
+    description: 'Nossa equipe analisa a situação e manda um orçamento justo e sem compromisso',
+    time: 'Resposta em até 30 minutos',
+    icon: 'clipboard'
+  },
+  {
+    step: 3,
+    title: 'Aprovação e Agendamento',
+    description: 'Se aprovar, agendamos para hoje ou amanhã conforme sua urgência',
+    time: 'Conforme sua disponibilidade',
+    icon: 'calendar'
+  },
+  {
+    step: 4,
+    title: 'Nossa Equipe Chega',
+    description: 'Chegamos com retroescavadeira e carregadora. A gente faz todo o trabalho pesado',
+    time: 'Até 2 horas após confirmação',
+    icon: 'truck'
+  },
+  {
+    step: 5,
+    title: 'Descarte e Comprovante',
+    description: 'Levamos tudo embora, descartamos de forma responsável e mandamos comprovante',
+    time: 'No máximo 24h você recebe documentação de destinação',
+    icon: 'file-check'
+  }
+];
+
+// Gallery photos
+const galleryPhotos = [
+  {
+    src: '/tele-entulho-terreno-vazio.webp',
+    alt: 'Terreno vazio após remoção de entulho por Tele Entulho MM Entulho',
+    caption: 'Antes e Depois: Terreno limpo e pronto para novo uso'
+  },
+  {
+    src: '/retroescavadeira-carregando.webp',
+    alt: 'Retroescavadeira carregando entulho de demolição',
+    caption: 'Carregamento rápido e eficiente com equipamento moderno'
+  },
+  {
+    src: '/carregadora-trabalho.webp',
+    alt: 'Carregadora removendo resíduos de reforma em Brasília',
+    caption: 'Equipamento pesado para resolver grandes volumes'
+  },
+  {
+    src: '/caminhao-tele-entulho.webp',
+    alt: 'Caminhão basculante carregado com entulho pronto para descarte',
+    caption: 'Transporte seguro de entulho para aterro licenciado'
+  },
+  {
+    src: '/limpeza-garagem.webp',
+    alt: 'Limpeza profissional de garagem com acúmulo de entulho',
+    caption: 'Limpeza de garagens e espaços internos'
+  },
+  {
+    src: '/demolicao-rapida.webp',
+    alt: 'Remoção de entulho de demolição de galpão',
+    caption: 'Demolições completas com remoção incluída'
+  },
+  {
+    src: '/terreno-vazio-apos.webp',
+    alt: 'Terreno completamente vazio após serviço de Tele Entulho',
+    caption: 'Espaço pronto para novo projeto ou venda'
+  },
+  {
+    src: '/comprovante-destinacao.webp',
+    alt: 'Documentação de destinação de entulho em aterro licenciado',
+    caption: 'Comprovante de descarte responsável incluído'
+  }
+];
+
+// Service areas
+const serviceAreas = [
+  'Águas Claras',
+  'Taguatinga',
+  'Ceilândia',
+  'Samambaia',
+  'Gama',
+  'Santa Maria',
+  'Brasília (Plano Piloto)',
+  'Asa Norte',
+  'Asa Sul',
+  'Sobradinho',
+  'Cácamabas',
+  'Guará'
+];
+
+// Testimonials specific to tele entulho
+const testimonials = [
+  {
+    name: 'Carlos Mendes',
+    company: 'Proprietário — Reforma urgente em Taguatinga',
+    text: 'Meu terreno tinha acúmulo de entulho há anos. Chamei a MM Entulho e em 2 horas estava limpo! A equipe foi profissional, rápida e o preço foi justo. Recomendo demais para quem precisa de resposta rápida!',
+    rating: 5
+  },
+  {
+    name: 'Síndico Condomínio Águas Claras',
+    company: 'Administração — Limpeza de área comum',
+    text: 'Precisávamos limpar urgentemente uma área do condomínio. O Tele Entulho foi perfeito — chegaram rápido, removeram tudo e deixou tudo limpo. Sem complicação, sem demora. Muito profissional!',
+    rating: 5
+  },
+  {
+    name: 'Mariana Costa',
+    company: 'Proprietária — Demolição em Samambaia',
+    text: 'Demolir o galpão da minha avó foi complicado, mas a MM Entulho tornou tudo simples. Remover entulho no mesmo dia foi top! Agora o terreno está limpo e pronto para vender.',
+    rating: 5
+  }
+];
+
+// FAQ for tele entulho
+const faqs = [
+  {
+    question: 'Qual é a diferença entre Tele Entulho e Locação de Caçamba?',
+    answer: 'Tele Entulho é para quando você quer resolver rapidinho (até 2h) e não quer deixar caçamba no terreno. Locação é quando você precisa deixar a caçamba por dias/semanas enquanto trabalha.'
+  },
+  {
+    question: 'Qual é o volume mínimo para chamar Tele Entulho?',
+    answer: 'Não tem mínimo! Desde uma pequena limpeza de garagem até volumes grandes. Quanto maior, melhor o preço unitário.'
+  },
+  {
+    question: 'Como vocês calculam o preço?',
+    answer: 'Consultamos com você sobre o volume estimado e a localização, depois mandamos um orçamento justo. Você aprova antes de confirmar — sem surpresa.'
+  },
+  {
+    question: 'Preciso estar presente?',
+    answer: 'Ideal sim, para mostrar exatamente o que precisa remover. Mas se não puder, deixa mensagem com instruções que a gente resolve.'
+  },
+  {
+    question: 'O que vocês cobram extra?',
+    answer: 'Nada! Entrega, carregamento, transporte e descarte já estão inclusos no preço. Bem transparente.'
+  },
+  {
+    question: 'Quanto tempo demora para limpar um terreno?',
+    answer: 'Depende do volume. Um terreno pequeno/médio leva de 30 minutos a 1 hora. Grande pode levar 2-3 horas. A gente avisa no orçamento.'
+  },
+  {
+    question: 'E se tiver material perigoso (óleo, tinta, químico)?',
+    answer: 'Não removemos. Material tóxico precisa de descarte especial e licenciado. Mas entulho comum resolvemos rápido!'
+  },
+  {
+    question: 'Vocês cobram taxa de deslocamento?',
+    answer: 'Pode ter uma taxa pequena se você for muito longe do centro. Mas mandamos o orçamento completo antes — sem surpresas.'
+  }
+];
+---
+
+<BaseLayout
+  title="Tele Entulho em Brasília | Remoção Rápida de Entulho | MM Entulho"
+  description="Tele Entulho em Brasília! Remoção rápida de entulho em até 2 horas. Limpeza de terrenos, garagens, áreas externas. Orçamento grátis!"
+>
+  <!-- Hero Section -->
+  <section class="py-20 md:py-32 bg-yellow-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="mb-6">
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-semibold bg-white/20 text-white">Resposta em 2h</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+        Tele Entulho
+      </h1>
+      <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto">
+        Remoção rápida de entulho em até 2 horas. Limpeza de terrenos, garagens e áreas externas em toda Brasília
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <Breadcrumb items={breadcrumbItems} />
+
+  <!-- Description Section -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">{serviceDescription.title}</h2>
+
+      <div class="grid md:grid-cols-2 gap-8 items-start mb-12">
+        <div>
+          {serviceDescription.paragraphs.map((paragraph) => (
+            <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+        <img
+          src="/tele_entulho_brasilia.webp"
+          alt="Profissional de tele entulho carregando resíduo com retroescavadeira em Brasília"
+          class="rounded-lg shadow-lg"
+        />
+      </div>
+
+      <!-- Highlights -->
+      <div class="grid md:grid-cols-2 gap-6">
+        {serviceDescription.highlights.map((highlight) => (
+          <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-600">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">{highlight.title}</h3>
+            <p class="text-gray-600">{highlight.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        Benefícios do Tele Entulho
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {benefits.map((benefit) => (
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-3">{benefit.title}</h3>
+            <p class="text-gray-600">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        Como Funciona o Tele Entulho
+      </h2>
+
+      <div class="space-y-6">
+        {processSteps.map((step) => (
+          <div class="flex gap-6 bg-gray-50 p-6 rounded-lg">
+            <div class="flex-shrink-0">
+              <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-600 text-white font-bold text-lg">
+                {step.step}
+              </div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+              <p class="text-gray-600 mb-2">{step.description}</p>
+              <p class="text-sm text-yellow-600 font-semibold">{step.time}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Service Areas Section -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        Onde Fazemos Tele Entulho em Brasília
+      </h2>
+
+      <div class="bg-gray-50 p-8 rounded-lg mb-8">
+        <p class="text-gray-700 text-center mb-6">
+          Cobrimos toda Brasília e DF com resposta rápida. Não importa se você está em zona urbana ou mais distante — nossa frota de equipamentos chega para resolver.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          {serviceAreas.map((area) => (
+            <div class="flex items-center">
+              <span class="text-yellow-600 mr-3 font-bold">●</span>
+              <span class="text-gray-700">{area}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 p-6 bg-white rounded-lg">
+          <div>
+            <p class="text-sm text-gray-600 mb-1"><strong>Cobertura:</strong></p>
+            <p class="text-gray-900">Toda Brasília e DF</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600 mb-1"><strong>Resposta:</strong></p>
+            <p class="text-gray-900">Até 2 horas na maioria dos casos</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600 mb-1"><strong>Equipamento:</strong></p>
+            <p class="text-gray-900">Retroescavadeira e carregadora</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a
+          href="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded-lg transition-colors"
+        >
+          Solicite Agora pelo WhatsApp →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        O Que Clientes Dizem Sobre Tele Entulho
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {testimonials.map((testimonial) => (
+          <div class="bg-white p-8 rounded-lg shadow-md border-l-4 border-yellow-600">
+            <div class="flex items-center mb-4">
+              <div class="text-amber-400 flex">
+                {[...Array(testimonial.rating)].map(() => '⭐')}
+              </div>
+            </div>
+            <p class="text-gray-700 italic mb-6">{testimonial.text}</p>
+            <p class="font-bold text-gray-900">{testimonial.name}</p>
+            <p class="text-sm text-gray-600">{testimonial.company}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <FAQ />
+
+  <!-- CTA Final -->
+  <CTA
+    title="Entulho acumulado? Resolve Agora!"
+    description="Chame Tele Entulho e deixe sua propriedade limpa ainda hoje. Resposta em até 2 horas!"
+    primaryText="Solicitar Orçamento"
+    primaryUrl="https://wa.me/+5561974022227?text=Gostaria%20de%20or%C3%A7amento%20de%20ca%C3%A7ambras%20para%20entulhos"
+    secondaryText="Ver Outros Serviços"
+    secondaryUrl="/servicos"
+    layout="horizontal"
+  />
+
+  <!-- Internal Links -->
+  <section class="py-12 px-4 bg-gray-50">
+    <div class="container mx-auto max-w-4xl">
+      <h3 class="text-lg font-bold text-gray-900 mb-6 text-center">Páginas Relacionadas</h3>
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <a href="/" class="text-yellow-600 hover:text-yellow-700 font-semibold underline">
+          ← Voltar para a página inicial
+        </a>
+        <a href="/servicos" class="text-yellow-600 hover:text-yellow-700 font-semibold underline">
+          Ver todos os serviços
+        </a>
+        <a href="/contato" class="text-yellow-600 hover:text-yellow-700 font-semibold underline">
+          Fale conosco para dúvidas →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
