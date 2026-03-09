@@ -1,0 +1,82 @@
+---
+/**
+ * ResponsiveImage Component
+ * Serve imagens em múltiplos formatos (AVIF, WebP, JPEG) com srcset responsivo
+ *
+ * Uso:
+ * <ResponsiveImage
+ *   baseName="cacamba_de_entulho _em_brasilia"
+ *   alt="Caçamba de Entulho"
+ *   sizes="(max-width: 768px) 100vw, 50vw"
+ *   loading="eager"
+ *   fetchpriority="high"
+ * />
+ */
+
+interface Props {
+  baseName: string;
+  alt: string;
+  title?: string;
+  className?: string;
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  decoding?: 'async' | 'sync' | 'auto';
+  responsiveSizes?: number[];
+}
+
+const {
+  baseName,
+  alt,
+  title,
+  className = 'w-full h-auto',
+  sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  decoding = 'async',
+  responsiveSizes = [1200, 800, 400],
+} = Astro.props;
+
+const avifSrcset = responsiveSizes
+  .map(size => `/optimized/${baseName}-${size}w.avif ${size}w`)
+  .join(', ');
+
+const webpSrcset = responsiveSizes
+  .map(size => `/optimized/${baseName}-${size}w.webp ${size}w`)
+  .join(', ');
+
+const jpegSrcset = responsiveSizes
+  .map(size => `/optimized/${baseName}-${size}w.jpg ${size}w`)
+  .join(', ');
+---
+
+<picture class={className}>
+  <source
+    srcset={avifSrcset}
+    sizes={sizes}
+    type="image/avif"
+  />
+
+  <source
+    srcset={webpSrcset}
+    sizes={sizes}
+    type="image/webp"
+  />
+
+  <img
+    src={`/optimized/${baseName}-full.webp`}
+    srcset={jpegSrcset}
+    sizes={sizes}
+    alt={alt}
+    title={title || alt}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding={decoding}
+    style={{
+      aspectRatio: 'auto',
+      maxWidth: '100%',
+      height: 'auto',
+      display: 'block',
+    }}
+  />
+</picture>

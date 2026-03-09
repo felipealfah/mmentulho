@@ -1,8 +1,24 @@
-name = "mmentulho"
-compatibility_date = "2026-03-07"
+name = "cacambasbrasilia"
+type = "javascript"
+account_id = ""
+workers_dev = true
+main = "src/index.ts"
+site = { bucket = "dist" }
+build = { command = "npm run build" }
+compatibility_date = "2024-12-19"
 
-# Configuração para Cloudflare Pages
-# A plataforma gerencia automaticamente:
-# - Build command: npm run build
-# - Build output directory: dist
-# - Deploy do _worker.js gerado pelo Astro com Cloudflare adapter
+# Environment configuration
+[env.production]
+routes = [
+  { pattern = "mmentulho.com.br/*", zone_id = "" }
+]
+
+# Build configuration
+[build]
+command = "npm run build"
+cwd = "./"
+watch_paths = ["src/**/*.{js,ts,jsx,tsx,astro}"]
+
+# Triggers for Cloudflare Pages
+[triggers]
+crons = []

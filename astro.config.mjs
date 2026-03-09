@@ -69,6 +69,10 @@ export default defineConfig({
           },
         },
       },
+      // Otimizações para performance
+      cssCodeSplit: true,
+      sourcemap: false,
+      assetsInlineLimit: 4096,
     },
   },
 });

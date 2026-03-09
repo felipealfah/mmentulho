@@ -23,20 +23,75 @@ const {
       </p>
     </div>
 
-    {/* Map Container */}
-    <div class="rounded-lg overflow-hidden shadow-lg">
-      <iframe
-        src={mapEmbedUrl}
-        width="100%"
-        height="450"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        class="w-full"
-        title={`Google Maps - ${title}`}
-      ></iframe>
+    {/* Map Container - Lazy Loaded */}
+    <div class="rounded-lg overflow-hidden shadow-lg bg-gray-200" id="map-container">
+      <!-- Placeholder enquanto carrega -->
+      <div class="w-full h-[450px] flex items-center justify-center">
+        <div class="text-center">
+          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p class="text-gray-600">Carregando mapa...</p>
+        </div>
+      </div>
     </div>
+
+    {/* Script para lazy load do mapa */}
+    <script define:vars={{mapEmbedUrl, title}}>
+      // Lazy load do Google Maps usando IntersectionObserver
+      // Isso evita carregar o mapa até o usuário fazer scroll
+
+      const mapContainer = document.getElementById('map-container');
+
+      if (mapContainer && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Mapa está visível, carregar agora
+              const mapEmbedUrl = mapEmbedUrl || "https://www.google.com/maps?q=-15.7801,-47.9292&hl=pt-BR&z=14&output=embed";
+              const mapTitle = title || "Google Maps";
+
+              mapContainer.innerHTML = `
+                <iframe
+                  src="${mapEmbedUrl}"
+                  width="100%"
+                  height="450"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="w-full"
+                  title="Google Maps - ${mapTitle}"
+                ></iframe>
+              `;
+
+              // Parar de observar este elemento
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          rootMargin: '50px' // Começa a carregar 50px antes de aparecer
+        });
+
+        observer.observe(mapContainer);
+      } else {
+        // Fallback para navegadores que não suportam IntersectionObserver
+        const mapEmbedUrl = mapEmbedUrl || "https://www.google.com/maps?q=-15.7801,-47.9292&hl=pt-BR&z=14&output=embed";
+        const mapTitle = title || "Google Maps";
+
+        mapContainer.innerHTML = `
+          <iframe
+            src="${mapEmbedUrl}"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="w-full"
+            title="Google Maps - ${mapTitle}"
+          ></iframe>
+        `;
+      }
+    </script>
 
     {/* Map Info */}
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
