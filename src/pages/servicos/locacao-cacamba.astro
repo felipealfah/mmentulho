@@ -255,11 +255,19 @@ const faqs = [
             </p>
           ))}
         </div>
-        <img
-          src="/aluguel_cacamba_entulhobrasilia.webp"
-          alt="Caçambas de entulho MM Entulho empilhadas, prontas para aluguel em Brasília"
-          class="rounded-lg shadow-lg"
-        />
+        <picture>
+          <source srcset="/optimized/aluguel_cacamba_entulhobrasilia-400w.avif 400w, /optimized/aluguel_cacamba_entulhobrasilia-800w.avif 800w" type="image/avif" />
+          <source srcset="/optimized/aluguel_cacamba_entulhobrasilia-400w.webp 400w, /optimized/aluguel_cacamba_entulhobrasilia-800w.webp 800w" type="image/webp" />
+          <img
+            src="/optimized/aluguel_cacamba_entulhobrasilia-800w.jpg"
+            alt="Caçambas de entulho MM Entulho empilhadas, prontas para aluguel em Brasília"
+            class="rounded-lg shadow-lg"
+            width="800"
+            height="600"
+            decoding="async"
+            loading="lazy"
+          />
+        </picture>
       </div>
 
       <!-- Highlights -->

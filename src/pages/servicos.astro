@@ -124,8 +124,11 @@ const breadcrumbItems = [
       <div class="space-y-8">
         <!-- Card 1: Locação de Caçamba -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border-t-4 border-yellow-600">
-          {/* TODO: Substituir com imagem real de caçamba 4m³, 6m³ e 8m³ */}
-          <img src="/aluguel_cacamba_entulhobrasilia.webp" alt="Caçambas disponíveis para aluguel em Brasília" class="w-full h-96 object-cover object-bottom bg-gray-200" />
+          <picture>
+            <source srcset="/optimized/aluguel_cacamba_entulhobrasilia-400w.avif 400w, /optimized/aluguel_cacamba_entulhobrasilia-800w.avif 800w" type="image/avif" />
+            <source srcset="/optimized/aluguel_cacamba_entulhobrasilia-400w.webp 400w, /optimized/aluguel_cacamba_entulhobrasilia-800w.webp 800w" type="image/webp" />
+            <img src="/optimized/aluguel_cacamba_entulhobrasilia-800w.jpg" alt="Caçambas disponíveis para aluguel em Brasília" class="w-full h-96 object-cover object-bottom bg-gray-200" width="800" height="600" decoding="async" loading="lazy" />
+          </picture>
           <div class="p-6">
             <div class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold mb-4">
               Disponibilidade Imediata
@@ -176,8 +179,11 @@ const breadcrumbItems = [
 
         <!-- Card 2: Tele Entulho -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border-t-4 border-yellow-600">
-          {/* TODO: Substituir com imagem real de serviço de remoção de entulho */}
-          <img src="/tele_entulho_brasilia.webp" alt="Serviço de remoção de entulho sob demanda em Brasília" class="w-full h-96 object-cover object-center bg-gray-200" />
+          <picture>
+            <source srcset="/optimized/tele_entulho_brasilia-400w.avif 400w, /optimized/tele_entulho_brasilia-800w.avif 800w" type="image/avif" />
+            <source srcset="/optimized/tele_entulho_brasilia-400w.webp 400w, /optimized/tele_entulho_brasilia-800w.webp 800w" type="image/webp" />
+            <img src="/optimized/tele_entulho_brasilia-800w.jpg" alt="Serviço de remoção de entulho sob demanda em Brasília" class="w-full h-96 object-cover object-center bg-gray-200" width="800" height="600" decoding="async" loading="lazy" />
+          </picture>
           <div class="p-6">
             <div class="inline-block bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold mb-4">
               Resposta em 2 horas

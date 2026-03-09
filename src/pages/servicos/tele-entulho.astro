@@ -255,11 +255,19 @@ const faqs = [
             </p>
           ))}
         </div>
-        <img
-          src="/tele_entulho_brasilia.webp"
-          alt="Profissional de tele entulho carregando resíduo com retroescavadeira em Brasília"
-          class="rounded-lg shadow-lg"
-        />
+        <picture>
+          <source srcset="/optimized/tele_entulho_brasilia-400w.avif 400w, /optimized/tele_entulho_brasilia-800w.avif 800w" type="image/avif" />
+          <source srcset="/optimized/tele_entulho_brasilia-400w.webp 400w, /optimized/tele_entulho_brasilia-800w.webp 800w" type="image/webp" />
+          <img
+            src="/optimized/tele_entulho_brasilia-800w.jpg"
+            alt="Profissional de tele entulho carregando resíduo com retroescavadeira em Brasília"
+            class="rounded-lg shadow-lg"
+            width="800"
+            height="600"
+            decoding="async"
+            loading="lazy"
+          />
+        </picture>
       </div>
 
       <!-- Highlights -->
