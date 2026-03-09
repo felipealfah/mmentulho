@@ -8,16 +8,20 @@ import Navigation from './Navigation.astro';
     <div class="flex justify-between items-center">
       {/* Logo */}
       <a href="/" class="flex-shrink-0 hover:opacity-90 transition-opacity duration-300">
-        <img
-          src="/mm_entulho.webp"
-          alt="MM Entulho - Logo da empresa de aluguel de caçambas em Brasília"
-          class="h-10 md:h-12 object-contain"
-          width="200"
-          height="48"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-        />
+        <picture>
+          <source srcset="/optimized/mm_entulho-200w.avif 200w, /optimized/mm_entulho-400w.avif 400w" type="image/avif" />
+          <source srcset="/optimized/mm_entulho-200w.webp 200w, /optimized/mm_entulho-400w.webp 400w" type="image/webp" />
+          <img
+            src="/optimized/mm_entulho-400w.jpg"
+            alt="MM Entulho - Logo da empresa de aluguel de caçambas em Brasília"
+            class="h-10 md:h-12 object-contain"
+            width="200"
+            height="48"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
       </a>
 
       {/* Desktop Navigation */}
