@@ -24,13 +24,21 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <link rel="canonical" href={Astro.url} />
 
-    {/* Preload LCP Image */}
+    {/* Preload LCP Image - Optimized AVIF version */}
     <link
       rel="preload"
       as="image"
-      href="/cacamba_de_entulho%20_em_brasilia.webp"
+      href="/optimized/cacamba_de_entulho _em_brasilia-1200w.avif"
       fetchpriority="high"
-      imagesrcset="/cacamba_de_entulho%20_em_brasilia.webp"
+      type="image/avif"
+    />
+
+    {/* Preload LCP Image - WebP fallback */}
+    <link
+      rel="preload"
+      as="image"
+      href="/optimized/cacamba_de_entulho _em_brasilia-1200w.webp"
+      fetchpriority="high"
       type="image/webp"
     />
 
