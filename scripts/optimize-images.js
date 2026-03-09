@@ -6,12 +6,16 @@
  * Uso: node scripts/optimize-images.js
  */
 
-const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
+import sharp from 'sharp';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const sourceDir = './public';
-const outputDir = './public/optimized';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const sourceDir = path.join(__dirname, '../public');
+const outputDir = path.join(__dirname, '../public/optimized');
 
 // Criar diretório de saída se não existir
 if (!fs.existsSync(outputDir)) {
